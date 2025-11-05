@@ -13,6 +13,7 @@ import DJcontrolls from './components/DJ_controlls'
 import PlayButtons from './components/PlayButtons'
 import ProcButtons from './components/ProcButtons'
 import PreTextArea from './components/PreTextArea';
+import SaveLoad from './components/SaveLoad'
 
 let globalEditor = null;
 
@@ -129,11 +130,23 @@ return (
                         <PreTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
                     </div>
                     <div className="col-md-4">
-
+                        
                         <nav>
                             <ProcButtons />
                             <br />
-                            <PlayButtons onPlay={handlePlay} onStop={handleStop} />
+                            <PlayButtons onPlay={handlePlay} onStop={handleStop} />    
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <p class="lead">Hotkeys: press 1..4 to switch controles</p>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">1 - Preprocess</li>
+                                <li class="list-group-item">2 - Proc & Play</li>
+                                <li class="list-group-item">3 - Play</li>
+                                <li class="list-group-item">4 - Stop</li>
+                            </ul>
                         </nav>
                     </div>
                 </div>
@@ -143,7 +156,10 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
+                        <SaveLoad />
+                        <br />
                         <DJcontrolls />
+                        
                     </div>
                 </div>
             </div>

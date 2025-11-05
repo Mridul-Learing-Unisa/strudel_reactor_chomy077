@@ -31,5 +31,6 @@ groove: stack(
   s("cb").struct("[~ cb ~ ~]*2").postgain(0.4).room(0.2)
 )
 
-all(x => x.gain(0.25))
+
+all(x => x.gain(0.25).room(0.25))
 `;

@@ -14,70 +14,34 @@ import PlayButtons from './components/PlayButtons'
 import ProcButtons from './components/ProcButtons'
 import PreTextArea from './components/PreTextArea';
 import SaveLoad from './components/SaveLoad'
+import PreProcess from './utils/PreProcess';
 
 let globalEditor = null;
 
 const handleD3Data = (event) => {
     console.log(event.detail);
 };
-
-//export function SetupButtons() {
-
-//    document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
-//    document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
-//    document.getElementById('process').addEventListener('click', () => {
-//        Proc()
-//    }
-//    )
-//    document.getElementById('process_play').addEventListener('click', () => {
-//        if (globalEditor != null) {
-//            Proc()
-//            globalEditor.evaluate()
-//        }
-//    }
-//    )
-//}
-
-
-
-//export function ProcAndPlay() {
-//    if (globalEditor != null && globalEditor.repl.state.started == true) {
-//        console.log(globalEditor)
-//        Proc()
-//        globalEditor.evaluate();
-//    }
-//}
-
-//export function Proc() {
-
-//    let proc_text = document.getElementById('proc').value
-//    let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
-//    ProcessText(proc_text);
-//    globalEditor.setCode(proc_text_replaced)
-//}
-
-//export function ProcessText(match, ...args) {
-
-//    let replace = ""
-//    //if (document.getElementById('flexRadioDefault2').checked) {
-//    //    replace = "_"
-//    //}
-
-//    return replace
-//}
-
 export default function StrudelDemo() {
 
     const hasRun = useRef(false);
     const handlePlay = () => {
-        globalEditor.evaluate()
+        let outputText = PreProcess({ inputText: songText, volume: volume });
+        globalEditor.setCode(outputText);
+        globalEditor.evaluate();
     }
     const handleStop = () => {
         globalEditor.stop()
     }
 
-    const [songText,setSongText] = useState(stranger_tune)
-        
+    const [songText, setSongText] = useState(stranger_tune)
+    const [volume, setVolume] = useState(1);
+    const [state, setState] = useState("Stop");
+
+    useEffect(() => {
+        if (state === "play") {
+            handlePlay();
+        }
+    }, [volume])
 useEffect(() => {
 
     if (!hasRun.current) {
@@ -132,20 +96,19 @@ return (
                     <div className="col-md-4">
                         
                         <nav>
-                            <ProcButtons />
                             <br />
-                            <PlayButtons onPlay={handlePlay} onStop={handleStop} />    
-                            <br />
+                            <PlayButtons onPlay={() => { setState("play"); handlePlay() }} onStop={() => { setState("stop"); handleStop()}} />    
                             <br />
                             <br />
                             <br />
-                            <p class="lead">Hotkeys: press 1..4 to switch controles</p>
+                            <br />
+                            <p className="lead">Hotkeys: press 1..4 to switch controles</p>
 
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">1 - Preprocess</li>
-                                <li class="list-group-item">2 - Proc & Play</li>
-                                <li class="list-group-item">3 - Play</li>
-                                <li class="list-group-item">4 - Stop</li>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">1 - Preprocess</li>
+                                <li className="list-group-item">2 - Proc & Play</li>
+                                <li className="list-group-item">3 - Play</li>
+                                <li className="list-group-item">4 - Stop</li>
                             </ul>
                         </nav>
                     </div>
@@ -158,7 +121,7 @@ return (
                     <div className="col-md-4">
                         <SaveLoad />
                         <br />
-                        <DJcontrolls />
+                        <DJcontrolls VolumeChange={volume} onVolumeChange={(e)=>setVolume(e.target.value) } />
                         
                     </div>
                 </div>

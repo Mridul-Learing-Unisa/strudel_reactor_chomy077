@@ -32,5 +32,5 @@ groove: stack(
 )
 
 
-all(x => x.gain(0.25).room(0.25))
+all(x => x.gain({$VOLUME}).room(0.25))
 `;

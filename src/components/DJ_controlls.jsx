@@ -1,5 +1,5 @@
 ﻿
-function DJcontrolls() {
+function DJcontrolls({volume, onVolumeChange }) {
     const BG = "https://cdn.mos.cms.futurecdn.net/2HFwv3bcoyZwtdG2tVBLv7-650-80.jpg.webp"
     return (
         <>
@@ -14,7 +14,7 @@ function DJcontrolls() {
                     </div>
 
                     <label htmlFor="volume_range" className="form-label">Volume</label>
-                        <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range"/>
+                        <input type="range" className="form-range" min="0" max="1" step="0.01" onMouseUp={onVolumeChange} id="volume_range"/>
 
                     <label htmlFor="tracks" className="form-label">Tracks</label>
 

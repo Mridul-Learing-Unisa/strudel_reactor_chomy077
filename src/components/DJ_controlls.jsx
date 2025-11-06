@@ -15,7 +15,7 @@ function DJcontrolls({ volume, onVolumeChange, cpmChange, onCpmChange, onTracksC
     };
     return (
         <>
-            <div className="card shadow border-0" style={{ background: 'blue', backgroundSize: "cover", backgroundPosition: "center", borderRadius: "12px" }}>
+            <div className="card shadow border-0" style={{ backgroundImage: `url(${BG})`, backgroundSize: "cover", backgroundPosition: "center", borderRadius: "12px" }}>
             
                 <div className="card shadow border-0" style={{  background: 'black', opacity: '0.7', color: "white" }}>
                 <div className="card-body">

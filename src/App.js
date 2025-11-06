@@ -1,4 +1,4 @@
-import './App.css';
+﻿import './App.css';
 import { useEffect, useRef, useState } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
 import { evalScope } from '@strudel/core';
@@ -89,44 +89,57 @@ useEffect(() => {
 }, [songText]);
 
 
-return (
-    <div>
-        <h2>Strudel Demo</h2>
-        <main>
+    return (
+        <div className="bg-dark text-light min-vh-100">
+            <main>
+                <div className="container-fluid py-4">
+                    <h2 className="display-4 mb-4"> 🎵 Strudel Demo</h2>
 
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <PreTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
-                    </div>
-                    <div className="col-md-4">
-                        
-                        <nav>
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div className="mb-3">
+                                <label className="form-label fs-5">Your Code</label>
+                                <PreTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} />
+                            </div>
+                            <div className="mb-3">
+                                <div className="d-flex gap-2 mt-2 mb-3" >
+                                    <label className="form-label fs-5" style={{ marginRight: '80%'} }>Live Output</label>
+                                    <PlayButtons onPlay={() => { setState("play"); handlePlay() }} onStop={() => { setState("stop"); handleStop() }} />
+                                </div>
+                                <div style={{ maxHeight: '50vh', overflowY: 'auto' }} className="p-2 rounded border border-secondary">
+                                    <div id="editor" />
+                                    <div id="output" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-4">
+                            <div style={{ position: 'sticky', top: '1rem' }}>
+                                <div className="p-3 bg-secondary bg-opacity-10 border border-secondary rounded shadow-sm">
+                                    <div className="mb-3">
+                                        <SaveLoad />
+                                    </div>
 
-                            <PlayButtons onPlay={() => { setState("play"); handlePlay() }} onStop={() => { setState("stop"); handleStop()}} />    
-                            <br />
-                            <br />
+                                    <div className="mb-3">
+                                        <DJcontrolls VolumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} cpmChange={cpm} onCpmChange={(e) => setCpm(e.target.value)} onTracksChange={(nextTracks) => setTracks(nextTracks)} />
+                                    </div>
 
-                        </nav>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <div id="editor" />
-                        <div id="output" />
-                    </div>
-                    <div className="col-md-4">
-                        <SaveLoad />
-                        <br />
-                        <DJcontrolls VolumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} cpmChange={cpm} onCpmChange={(e) => setCpm(e.target.value)} onTracksChange={(nextTracks) => setTracks(nextTracks)} />
-                        <div className="alert alert-info" role="alert">
-                            <p className="lead">Hotkeys: press 1..4 to activate/deactivate instruments</p>
+                                    <div className="alert alert-info" role="alert">
+                                        <p className="lead mb-0">Hotkeys: press 1..4 to activate/deactivate instruments</p>
+                                    </div>
+                                </div>
+                                <div className="mt-4">
+                                    <canvas
+                                        id="roll"
+                                        className="w-100 bg-light rounded"
+                                        style={{ minHeight: '150px' }}
+                                    ></canvas>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <canvas id="roll"></canvas>
-        </main >
-    </div >
-);
+            </main >
+        </div >
+    );
 }

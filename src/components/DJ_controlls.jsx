@@ -1,5 +1,5 @@
 ﻿
-function DJcontrolls({volume, onVolumeChange }) {
+function DJcontrolls({ volume, onVolumeChange, cpmChange, onCpmChange }) {
     const BG = "https://cdn.mos.cms.futurecdn.net/2HFwv3bcoyZwtdG2tVBLv7-650-80.jpg.webp"
     return (
         <>
@@ -10,7 +10,7 @@ function DJcontrolls({volume, onVolumeChange }) {
                     <h5 className="card-title mb-3 text-warning" style={{ textAlign: "center" }} >DJ Controls</h5>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="cmp_label">Set CPM</span>
-                        <input type="text" className="form-control" id = "cpm_text_input" placeholder="30" aria-label="cpm" aria-describedby="cpm_label" />
+                            <input type="text" className="form-control" id="cpm_text_input" onChange={onCpmChange} placeholder="30" aria-label="cpm" aria-describedby="cpm_label" />
                     </div>
 
                     <label htmlFor="volume_range" className="form-label">Volume</label>

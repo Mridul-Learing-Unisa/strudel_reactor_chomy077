@@ -2,7 +2,7 @@
 export const stranger_tune = `
 samples('https://raw.githubusercontent.com/tidalcycles/Dirt-Samples/master/strudel.json')
 
-setcpm(30)
+setcpm({$CPM})
 
 drums: stack(
   s("bd").struct("[bd ~ ~ bd ~ bd ~ ~]").postgain(0.9),

@@ -25,7 +25,7 @@ export default function StrudelDemo() {
 
     const hasRun = useRef(false);
     const handlePlay = () => {
-        let outputText = PreProcess({ inputText: songText, volume: volume });
+        let outputText = PreProcess({ inputText: songText, volume: volume, cpm: cpm });
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     }
@@ -36,12 +36,13 @@ export default function StrudelDemo() {
     const [songText, setSongText] = useState(stranger_tune)
     const [volume, setVolume] = useState(1);
     const [state, setState] = useState("Stop");
+    const [cpm, setCpm] = useState(30);
 
     useEffect(() => {
         if (state === "play") {
             handlePlay();
         }
-    }, [volume])
+    }, [volume, cpm])
 useEffect(() => {
 
     if (!hasRun.current) {
@@ -96,20 +97,11 @@ return (
                     <div className="col-md-4">
                         
                         <nav>
-                            <br />
+
                             <PlayButtons onPlay={() => { setState("play"); handlePlay() }} onStop={() => { setState("stop"); handleStop()}} />    
                             <br />
                             <br />
-                            <br />
-                            <br />
-                            <p className="lead">Hotkeys: press 1..4 to switch controles</p>
 
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">1 - Preprocess</li>
-                                <li className="list-group-item">2 - Proc & Play</li>
-                                <li className="list-group-item">3 - Play</li>
-                                <li className="list-group-item">4 - Stop</li>
-                            </ul>
                         </nav>
                     </div>
                 </div>
@@ -121,8 +113,10 @@ return (
                     <div className="col-md-4">
                         <SaveLoad />
                         <br />
-                        <DJcontrolls VolumeChange={volume} onVolumeChange={(e)=>setVolume(e.target.value) } />
-                        
+                        <DJcontrolls VolumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} cpmChange={cpm} onCpmChange={(e) => setCpm(e.target.value)} />
+                        <div className="alert alert-info" role="alert">
+                            <p className="lead">Hotkeys: press 1..4 to activate/deactivate instruments</p>
+                        </div>
                     </div>
                 </div>
             </div>

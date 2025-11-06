@@ -25,7 +25,7 @@ export default function StrudelDemo() {
 
     const hasRun = useRef(false);
     const handlePlay = () => {
-        let outputText = PreProcess({ inputText: songText, volume: volume, cpm: cpm });
+        let outputText = PreProcess({ inputText: songText, volume: volume, cpm: cpm, tracks: tracks });
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     }
@@ -37,12 +37,17 @@ export default function StrudelDemo() {
     const [volume, setVolume] = useState(1);
     const [state, setState] = useState("Stop");
     const [cpm, setCpm] = useState(30);
-
+    const [tracks, setTracks] = useState({
+        drum: true,
+        bassline: true,
+        melody: true,
+        groove: true,
+    });
     useEffect(() => {
         if (state === "play") {
             handlePlay();
         }
-    }, [volume, cpm])
+    }, [volume, cpm, tracks])
 useEffect(() => {
 
     if (!hasRun.current) {
@@ -113,7 +118,7 @@ return (
                     <div className="col-md-4">
                         <SaveLoad />
                         <br />
-                        <DJcontrolls VolumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} cpmChange={cpm} onCpmChange={(e) => setCpm(e.target.value)} />
+                        <DJcontrolls VolumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} cpmChange={cpm} onCpmChange={(e) => setCpm(e.target.value)} onTracksChange={(nextTracks) => setTracks(nextTracks)} />
                         <div className="alert alert-info" role="alert">
                             <p className="lead">Hotkeys: press 1..4 to activate/deactivate instruments</p>
                         </div>
@@ -124,6 +129,4 @@ return (
         </main >
     </div >
 );
-
-
 }

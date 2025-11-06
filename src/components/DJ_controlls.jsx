@@ -1,6 +1,18 @@
-﻿
-function DJcontrolls({ volume, onVolumeChange, cpmChange, onCpmChange }) {
-    const BG = "https://cdn.mos.cms.futurecdn.net/2HFwv3bcoyZwtdG2tVBLv7-650-80.jpg.webp"
+﻿import { useState } from 'react'
+function DJcontrolls({ volume, onVolumeChange, cpmChange, onCpmChange, onTracksChange}) {
+    const BG = "https://cdn.mos.cms.futurecdn.net/2HFwv3bcoyZwtdG2tVBLv7-650-80.jpg.webp";
+    const [tracks, setTracks] = useState({
+        drum: true,
+        bassline: true,
+        melody: true,
+        groove: true,
+    });
+
+    const toggleTrack = (id) => {
+        const next = { ...tracks, [id]: !tracks[id] };
+        setTracks(next);
+        if (typeof onTracksChange === "function") onTracksChange(next);
+    };
     return (
         <>
             <div className="card shadow border-0" style={{ background: 'blue', backgroundSize: "cover", backgroundPosition: "center", borderRadius: "12px" }}>
@@ -19,26 +31,26 @@ function DJcontrolls({ volume, onVolumeChange, cpmChange, onCpmChange }) {
                     <label htmlFor="tracks" className="form-label">Tracks</label>
 
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" style={{ accentColor: 'gold' }} id="s1"/>
-                        <label className="form-check-label" htmlFor="s1">
+                        <input className="form-check-input" type="checkbox" id="Drum" checked={tracks.drum} onChange={() => toggleTrack('drum')} />
+                            <label className="form-check-label" htmlFor="drum">
                             Drum
                          </label>
                     </div>
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="d1" />
-                        <label className="form-check-label" htmlFor="d1">
+                            <input className="form-check-input" type="checkbox" id="Baseline" checked={tracks.bassline} onChange={() => toggleTrack('bassline')} />
+                            <label className="form-check-label" htmlFor="bassline">
                             Baseline
                         </label>
                     </div>
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="d2" />
-                        <label className="form-check-label" htmlFor="d1">
+                            <input className="form-check-input" type="checkbox" id="Melody" checked={tracks.melody} onChange={() => toggleTrack('melody')} />
+                            <label className="form-check-label" htmlFor="melody">
                             Melody
                         </label>
                         </div>
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="d2" />
-                        <label className="form-check-label" htmlFor="d1">
+                            <input className="form-check-input" type="checkbox" id="groove" checked={tracks.groove} onChange={() => toggleTrack('groove')} />
+                            <label className="form-check-label" htmlFor="groove">
                             Groove
                         </label>
                     </div>

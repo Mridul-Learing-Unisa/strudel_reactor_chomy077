@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\dj_controlls.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\dj_controlls.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\saveload.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\saveload.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\dj_controlls.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\dj_controlls.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\pretextarea.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -30,24 +34,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "SaveLoad.jsx",
+              "DocumentMoniker": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\SaveLoad.jsx",
+              "RelativeDocumentMoniker": "src\\components\\SaveLoad.jsx",
+              "ToolTip": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\SaveLoad.jsx",
+              "RelativeToolTip": "src\\components\\SaveLoad.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-11-05T19:42:44.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "App.js",
               "DocumentMoniker": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\App.js",
               "RelativeDocumentMoniker": "src\\App.js",
               "ToolTip": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\App.js",
               "RelativeToolTip": "src\\App.js",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAJsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAQwJMAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-10-25T12:07:14.496Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "tunes.js",
               "DocumentMoniker": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\tunes.js",
               "RelativeDocumentMoniker": "src\\tunes.js",
@@ -55,12 +72,11 @@
               "RelativeToolTip": "src\\tunes.js",
               "ViewState": "AgIAABUAAAAAAAAAAAAAACIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-02T20:09:46.58Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-02T20:09:46.58Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ProcButtons.jsx",
               "DocumentMoniker": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\ProcButtons.jsx",
               "RelativeDocumentMoniker": "src\\components\\ProcButtons.jsx",
@@ -68,12 +84,11 @@
               "RelativeToolTip": "src\\components\\ProcButtons.jsx",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-10-26T12:58:50.876Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-26T12:58:50.876Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PreTextArea.jsx",
               "DocumentMoniker": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\PreTextArea.jsx",
               "RelativeDocumentMoniker": "src\\components\\PreTextArea.jsx",
@@ -81,18 +96,17 @@
               "RelativeToolTip": "src\\components\\PreTextArea.jsx",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-10-25T12:34:59.745Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T12:34:59.745Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DJ_controlls.jsx",
               "DocumentMoniker": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\DJ_controlls.jsx",
               "RelativeDocumentMoniker": "src\\components\\DJ_controlls.jsx",
               "ToolTip": "C:\\Users\\mrdlc\\source\\repos\\strudel_reactor_chomy077\\src\\components\\DJ_controlls.jsx",
               "RelativeToolTip": "src\\components\\DJ_controlls.jsx",
-              "ViewState": "AgIAABoAAAAAAAAAAAAQwDMAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2025-10-25T12:20:32.961Z",
               "EditorCaption": ""

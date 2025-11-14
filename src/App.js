@@ -15,6 +15,7 @@ import ProcButtons from './components/ProcButtons'
 import PreTextArea from './components/PreTextArea';
 import SaveLoad from './components/SaveLoad'
 import PreProcess from './utils/PreProcess';
+import { FaMusic } from "react-icons/fa";
 
 let globalEditor = null;
 
@@ -43,11 +44,57 @@ export default function StrudelDemo() {
         melody: true,
         groove: true,
     });
+    const [hotkeyMsg, setHotkeyMsg] = useState('');
+    const flashHotkey = (msg) => {
+      setHotkeyMsg(msg);
+      window.clearTimeout(flashHotkey._t);
+      flashHotkey._t = window.setTimeout(() => setHotkeyMsg(''), 800);
+    };
     useEffect(() => {
         if (state === "play") {
             handlePlay();
         }
     }, [volume, cpm, tracks])
+
+useEffect(() => {
+  const onKey = (ev) => {
+    // ignore when typing in input/textarea
+    const tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (['INPUT', 'TEXTAREA'].includes(tag)) return;
+
+    const key = ev.key;
+    if (!['1','2','3','4'].includes(key)) return;
+
+    const map = { '1': 'drum', '2': 'bassline', '3': 'melody', '4': 'groove' };
+    const trackKey = map[key];
+
+    // toggle tracks and update editor immediately
+    setTracks(prev => {
+      const next = { ...prev, [trackKey]: !prev[trackKey] };
+
+      // apply preprocess immediately so editor shows synced code
+      try {
+        const outputText = PreProcess({ inputText: songText, volume: volume, cpm: cpm, tracks: next });
+        if (globalEditor) {
+          globalEditor.setCode(outputText);
+        }
+      } catch (err) {
+        console.error('Preprocess failed after hotkey toggle', err);
+      }
+
+      // feedback badge
+      if (typeof flashHotkey === 'function') flashHotkey(`${trackKey} ${next[trackKey] ? 'ON' : 'OFF'}`);
+
+      return next;
+    });
+
+    ev.preventDefault();
+  };
+
+  window.addEventListener('keydown', onKey);
+  return () => window.removeEventListener('keydown', onKey);
+}, [songText, volume, cpm, setTracks]);
+
 useEffect(() => {
 
     if (!hasRun.current) {
@@ -93,7 +140,7 @@ useEffect(() => {
         <div className="bg-dark text-light min-vh-100">
             <main>
                 <div className="container-fluid py-4">
-                    <h2 className="display-4 mb-4"> 🎵 Strudel Demo</h2>
+                    <h2 className="display-4 mb-4"> <FaMusic /> Strudel Demo</h2>
 
                     <div className="row">
                         <div className="col-md-8">
@@ -120,7 +167,7 @@ useEffect(() => {
                                     </div>
 
                                     <div className="mb-3">
-                                        <DJcontrolls VolumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} cpmChange={cpm} onCpmChange={(e) => setCpm(e.target.value)} onTracksChange={(nextTracks) => setTracks(nextTracks)} />
+                                        <DJcontrolls VolumeChange={ volume } onVolumeChange = {(e) => setVolume(e.target.value)} cpmChange = { cpm } onCpmChange = {(e) => setCpm(e.target.value)} tracks = { tracks } onTracksChange={(nextTracks) => setTracks(nextTracks)} />
                                     </div>
 
                                     <div className="alert alert-info" role="alert">

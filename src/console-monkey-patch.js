@@ -9,6 +9,8 @@ export default function console_monkey_patch() {
 
     originalLog = console.log;
 
+    window.getD3Data = () => [...logArray];
+
     //Overwrite console.log function
     console.log = function (...args) {
         //Join args with space, default behaviour. Check for [hap], that's a strudel prefix
@@ -23,8 +25,7 @@ export default function console_monkey_patch() {
                 logArray.splice(0, 1);
             }
             //Dispatch a customevent we can listen to in App.js
-            const event = new CustomEvent("d3Data", { detail: [...logArray] });
-            document.dispatchEvent(event);
+            window.dispatchEvent(new CustomEvent("d3Data", { detail: [...logArray] }))
 
         }
         originalLog.apply(console, args);

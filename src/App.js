@@ -14,6 +14,7 @@ import PlayButtons from './components/PlayButtons'
 import ProcButtons from './components/ProcButtons'
 import PreTextArea from './components/PreTextArea';
 import SaveLoad from './components/SaveLoad'
+import Graph from "./components/Graph";
 import PreProcess from './utils/PreProcess';
 import { FaMusic } from "react-icons/fa";
 
@@ -33,7 +34,6 @@ export default function StrudelDemo() {
     const handleStop = () => {
         globalEditor.stop()
     }
-
     const [songText, setSongText] = useState(stranger_tune)
     const [volume, setVolume] = useState(1);
     const [state, setState] = useState("Stop");
@@ -45,6 +45,7 @@ export default function StrudelDemo() {
         groove: true,
     });
     const [hotkeyMsg, setHotkeyMsg] = useState('');
+    const [d3DataState, setD3DataState] = useState([]);
     const flashHotkey = (msg) => {
       setHotkeyMsg(msg);
       window.clearTimeout(flashHotkey._t);
@@ -55,6 +56,25 @@ export default function StrudelDemo() {
             handlePlay();
         }
     }, [volume, cpm, tracks])
+
+    useEffect(() => {
+        const handler = (ev) => {
+            if (Array.isArray(ev.detail)) {
+                setD3DataState(ev.detail);
+            }
+        };
+
+        window.addEventListener("d3Data", handler);
+
+        // initial pull if there is existing data
+        try {
+            if (typeof window.getD3Data === "function") {
+                setD3DataState(window.getD3Data());
+            }
+        } catch (e) { }
+
+        return () => window.removeEventListener("d3Data", handler);
+    }, []);
 
 useEffect(() => {
   const onKey = (ev) => {
@@ -175,18 +195,21 @@ useEffect(() => {
                                     </div>
                                 </div>
                                 <div className="mt-4">
-                                    <canvas
-                                        id="roll"
-                                        className="w-100 bg-light rounded"
-                                        style={{ minHeight: '150px' }}
-                                    ></canvas>
+                                    <Graph data={d3DataState}/>
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
                 </div>
+                <canvas
+                    id="roll"
+                    className="w-100 bg-light rounded"
+                    style={{ display: "block", minHeight: '150px' }}
+                ></canvas>
             </main >
         </div >
+
     );
 }

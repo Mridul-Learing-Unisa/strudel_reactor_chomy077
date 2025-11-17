@@ -46,6 +46,46 @@ export default function StrudelDemo() {
     });
     const [hotkeyMsg, setHotkeyMsg] = useState('');
     const [d3DataState, setD3DataState] = useState([]);
+
+    const defaultState = {
+        volume: 1,
+        cpm: 30,
+        tracks: {
+            drum: true,
+            bassline: true,
+            melody: true,
+            groove: true,
+        }
+    };
+
+    function getSavePayload() {
+        return {
+            volume,
+            cpm,
+            tracks
+        };
+    }
+
+    function onLoadObject(obj) {
+        if (typeof obj.volume !== "undefined") setVolume(obj.volume);
+        if (typeof obj.cpm !== "undefined") setCpm(obj.cpm);
+        if (typeof obj.tracks === "object") setTracks(obj.tracks);
+        // sync editor with new settings
+        try {
+            if (globalEditor && typeof globalEditor.setCode === "function") {
+                const outputText = PreProcess({
+                    inputText: songText,
+                    volume: Number(obj.volume ?? volume),
+                    cpm: Number(obj.cpm ?? cpm),
+                    tracks: obj.tracks ?? tracks
+                });
+                globalEditor.setCode(outputText);
+            }
+        } catch (e) {
+            console.warn("Failed to apply loaded settings to editor", e);
+        }
+    }
+
     const flashHotkey = (msg) => {
       setHotkeyMsg(msg);
       window.clearTimeout(flashHotkey._t);
@@ -183,7 +223,7 @@ useEffect(() => {
                             <div style={{ position: 'sticky', top: '1rem' }}>
                                 <div className="p-3 bg-secondary bg-opacity-10 border border-secondary rounded shadow-sm">
                                     <div className="mb-3">
-                                        <SaveLoad />
+                                        <SaveLoad getSavePayload={getSavePayload} onLoadObject={onLoadObject} defaultState={defaultState} />
                                     </div>
 
                                     <div className="mb-3">

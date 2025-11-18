@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# Strudel Music Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Overview
+This project is a Strudel-based music web application built with React.  
+The user can play music, change controls, visualise gain values, and save/load settings.  
+All Strudel code used in this project was written **by me**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 2. Controls
 
-### `npm start`
+### **Play / Stop**
+- **Play** → Starts the music by running the preprocessed Strudel code.
+- **Stop** → Stops all audio.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### **Volume Slider**
+- Adjusts how loud the audio output is.
 
-### `npm test`
+### **CPM**
+- CPM = cycles per minute.
+- Controls the tempo (speed) of the music.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+### **Track Toggles**
+The user can turn on/off these musical layers:
+- Drum  
+- Bassline  
+- Melody  
+- Groove  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Turning a track off removes it from the song.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **Hotkeys**
+For quick control:
+- **1** → Toggle Drum  
+- **2** → Toggle Bassline  
+- **3** → Toggle Melody  
+- **4** → Toggle Groove  
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 3. Gain Visualiser (Graph)
+- A live D3 line graph showing the gain values that Strudel logs.
+- Low values show as **blue** and high values as **purple**.
+- The graph updates in real time while the song is playing.
+- There is a **Clear Graph** button to reset it manually.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 4. Save / Load / Reset Settings
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **Save**
+- Saves the user settings as `settings.json`.
+- Stored values:
+  - volume  
+  - cpm  
+  - track toggles  
 
-## Learn More
+### **Load**
+- Loads a previously saved `settings.json`.
+- Applies the saved settings instantly.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **Reset**
+- Resets controls back to defaults:
+  - volume: 1  
+  - cpm: 30  
+  - drum/bassline/melody/groove: all ON  
+- Does not change the JSON file unless Save is pressed.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 5. Demonstration Video
+`https://drive.google.com/file/d/17H18rd94REvvH00AgX14szge7B70rPm8/view?usp=sharing`
+``
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 6. Bonus Features
+- Custom D3 gradient gain graph  
+- Track toggle hotkeys  
+- Save/Load JSON settings  
+- Automatic preprocessing system  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 7. Song Code Source
+- **All music and Strudel code used in this project was written entirely by me.**  
+- No bakery templates or external tunes were used.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -76,7 +76,7 @@ For quick control:
 
 ## 5. Demonstration Video
 `https://drive.google.com/file/d/17H18rd94REvvH00AgX14szge7B70rPm8/view?usp=sharing`
-``
+I wore sunglasses and had rbg backround to make it look cool
 
 ---
 
